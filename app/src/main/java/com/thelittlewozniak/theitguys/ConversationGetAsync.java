@@ -1,7 +1,10 @@
 package com.thelittlewozniak.theitguys;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thelittlewozniak.theitguys.pojo.Conversation;
@@ -20,6 +23,8 @@ import java.util.List;
  */
 
 public class ConversationGetAsync extends AsyncTask<String, String, List<Message>> {
+    private Activity activity;
+    private Intent intent;
     @Override
     protected List<Message> doInBackground(String... strings) {
         List<Message> messages = null;
@@ -47,6 +52,17 @@ public class ConversationGetAsync extends AsyncTask<String, String, List<Message
     }
     @Override
     protected void onPostExecute(List<Message> messages){
-
+        super.onPostExecute(messages);
+        if (messages != null) {
+            intent = new Intent(activity, ConversationActivity.class);
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                intent.putExtra("messages", mapper.writeValueAsString(messages));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            activity.startActivityForResult(intent, 3);
+            activity.finish();
+        }
     }
 }

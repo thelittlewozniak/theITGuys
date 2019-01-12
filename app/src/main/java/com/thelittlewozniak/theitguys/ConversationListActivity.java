@@ -55,7 +55,14 @@ public class ConversationListActivity extends AppCompatActivity {
                     tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
                     tv.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
                 }
+                final int j=conversations.get(i).getId();
                 tr.addView(tv);
+                tr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        new ConversationListAsync(activity).execute(String.valueOf(j));
+                    }
+                });
                 tableLayout.addView(tr);
             }
         }
