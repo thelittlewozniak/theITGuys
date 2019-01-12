@@ -10,4 +10,6 @@
     <string name="conversationSubjectEditText">nom de la conversation</string>
     <string name="conversationCreateButton">Creer une nouvelle conversation</string>
     <string name="backButton">Retour</string>
+    <string name="SendMessage">envoyez</string>
+    <string name="messageText">Votre message...</string>
 </resources>
