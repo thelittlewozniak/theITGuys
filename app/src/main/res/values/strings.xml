@@ -6,4 +6,7 @@
     <string name="buttonConnect">Login</string>
     <string name="buttonRegister">Register an acount</string>
     <string name="ConversationListTitle">Conversations:</string>
+    <string name="conversationSubjectEditText">Name of the conversation</string>
+    <string name="conversationCreateButton">Create a new conversation</string>
+    <string name="BackButtonCreationView">Back</string>
 </resources>

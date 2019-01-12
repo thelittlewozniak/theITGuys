@@ -1,5 +1,6 @@
 package com.thelittlewozniak.theitguys;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,9 +27,11 @@ import java.util.List;
  */
 
 public class ConversationListActivity extends AppCompatActivity {
+    private Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity=this;
         setContentView(R.layout.activity_conversationlist);
         TableLayout tableLayout=findViewById(R.id.listConversation);
         List<Conversation> conversations=null;
@@ -55,5 +60,19 @@ public class ConversationListActivity extends AppCompatActivity {
                 tableLayout.addView(tr);
             }
         }
+        Button addConversation=findViewById(R.id.buttonAddConversation);
+        addConversation.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity,AddConversationActivity.class));
+                    activity.finish();
+                }
+            }
+        );
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        new ConversationListAsync(activity).execute();
     }
 }

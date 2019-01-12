@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConversationListActivity">
-        </activity>
+        <activity android:name=".ConversationListActivity"></activity>
+        <activity android:name=".AddConversationActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
