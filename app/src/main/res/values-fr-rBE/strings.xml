@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TheITGuys</string>
+    <string name="Title">Les gars IT</string>
+    <string name="emailText">Entrer vos informations d\'email</string>
+    <string name="passwordText">Entrer votre mot de passe</string>
+    <string name="buttonConnect">Connection</string>
+</resources>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TheITGuys</string>
+    <string name="Title">The IT Guys</string>
+    <string name="emailText">Enter your email information</string>
+    <string name="passwordText">Enter your password</string>
+    <string name="buttonConnect">Login</string>
 </resources>
