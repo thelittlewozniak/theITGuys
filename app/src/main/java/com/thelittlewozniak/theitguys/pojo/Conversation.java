@@ -5,7 +5,9 @@ package com.thelittlewozniak.theitguys.pojo;
  */
 
 public class Conversation {
+
     private int id;
+
     private String sujet;
 
 
