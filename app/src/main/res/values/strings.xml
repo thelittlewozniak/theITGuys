@@ -5,4 +5,5 @@
     <string name="passwordText">Enter your password</string>
     <string name="buttonConnect">Login</string>
     <string name="buttonRegister">Register an acount</string>
+    <string name="ConversationListTitle">Conversations:</string>
 </resources>
