@@ -18,13 +18,15 @@
         <Button
             android:id="@+id/addConversationButton"
             android:layout_width="match_parent"
+            style="@android:style/Widget.Material.Button.Colored"
             android:layout_height="wrap_content"
             android:text="@string/conversationCreateButton" />
 
         <Button
             android:id="@+id/backButtonCreationConversation"
             android:layout_width="match_parent"
+            style="@android:style/Widget.Material.Button.Colored"
             android:layout_height="wrap_content"
-            android:text="@string/BackButtonCreationView" />
+            android:text="@string/backButton" />
     </android.widget.LinearLayout>
 </ScrollView>

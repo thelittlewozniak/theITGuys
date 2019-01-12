@@ -8,5 +8,5 @@
     <string name="ConversationListTitle">Conversations:</string>
     <string name="conversationSubjectEditText">Name of the conversation</string>
     <string name="conversationCreateButton">Create a new conversation</string>
-    <string name="BackButtonCreationView">Back</string>
+    <string name="backButton">Back</string>
 </resources>
