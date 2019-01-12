@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -50,20 +52,48 @@ public class ConversationActivity extends AppCompatActivity {
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 tv.setPadding(40, 40, 40, 40);
                 if (messages.get(i).getUtilisateur().getSexe()) {
-                    tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
-                    tv.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
-                } else {
                     tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
                     tv.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+                } else {
+                    tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
+                    tv.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
                 }
-                tr.addView(tv);
+                TextView usernmae=new TextView(this);
+                usernmae.setTypeface(Typeface.DEFAULT, Typeface.BOLD_ITALIC);
+                usernmae.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+                usernmae.setPadding(40, 40, 40, 40);
+                usernmae.setText(messages.get(i).getUtilisateur().getPseudo());
+                if(Session.getInstance().getUser().getId()==messages.get(i).getUtilisateur().getId()){
+                    tr.addView(usernmae);
+                    tr.addView(tv);
+                }
+                else{
+                    tr.addView(tv);
+                    tr.addView(usernmae);
+                }
                 tableLayout.addView(tr);
             }
         }
+        Button button =findViewById(R.id.backButtonConversation);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ConversationListAsync(activity).execute();
+            }
+        });
+        Button addMessage=findViewById(R.id.buttonSendMessage);
+        addMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText message=findViewById(R.id.messageEditText);
+
+            }
+        });
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+        new ConversationGetAsync(activity).execute(getIntent().getExtras().getString("id"));
     }
 }

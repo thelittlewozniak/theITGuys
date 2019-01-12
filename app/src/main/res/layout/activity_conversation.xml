@@ -22,7 +22,8 @@
                 <TableLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tableConversation" >
+                    android:id="@+id/tableConversation"
+                    android:stretchColumns="0,1">
                 </TableLayout>
 
         </ScrollView>

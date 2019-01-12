@@ -25,12 +25,14 @@ import java.util.List;
 public class ConversationGetAsync extends AsyncTask<String, String, List<Message>> {
     private Activity activity;
     private Intent intent;
+    private String id;
     public ConversationGetAsync(Activity activity){this.activity=activity;}
     @Override
     protected List<Message> doInBackground(String... strings) {
         List<Message> messages = null;
+        id=strings[0];
         try {
-            URL url = new URL("http://androidweb.azurewebsites.net/api/Message/Get?id="+strings[0]);
+            URL url = new URL("http://androidweb.azurewebsites.net/api/Message/Get?id="+id);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("Content-Type", "text/plain");
@@ -62,6 +64,7 @@ public class ConversationGetAsync extends AsyncTask<String, String, List<Message
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
+            intent.putExtra("idConv",String.valueOf(id));
             activity.startActivityForResult(intent, 3);
             activity.finish();
         }
