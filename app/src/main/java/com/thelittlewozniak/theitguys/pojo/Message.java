@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Message {
 
-    private  int id;
+    private int id;
 
     private String text;
 
@@ -19,23 +19,43 @@ public class Message {
     public Utilisateur utilisateur;
 
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getText() {return text;}
+    public String getText() {
+        return text;
+    }
 
-    public void setText(String text) {this.text = text;}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-    public Date getDate() {return date;}
+    public Date getDate() {
+        return date;
+    }
 
-    public void setDate(Date date) {this.date = date;}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-    public Conversation getConversation() {return conversation;}
+    public Conversation getConversation() {
+        return conversation;
+    }
 
-    public void setConversation(Conversation conversation) {this.conversation = conversation;}
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+    }
 
-    public Utilisateur getUtilisateur() {return utilisateur;}
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
 
-    public void setUtilisateur(Utilisateur utilisateur) {this.utilisateur = utilisateur;}
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }

@@ -13,20 +13,21 @@ import android.widget.EditText;
 
 public class AddConversationActivity extends AppCompatActivity {
     private Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addconversation);
-        activity=this;
-        final EditText subjet=findViewById(R.id.conversationSubjectEditText);
-        Button button=findViewById(R.id.backButtonCreationConversation);
+        activity = this;
+        final EditText subjet = findViewById(R.id.conversationSubjectEditText);
+        Button button = findViewById(R.id.backButtonCreationConversation);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new ConversationListAsync(activity).execute();
             }
         });
-        Button buttonCreate=findViewById(R.id.addConversationButton);
+        Button buttonCreate = findViewById(R.id.addConversationButton);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

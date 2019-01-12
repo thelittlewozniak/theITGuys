@@ -20,43 +20,44 @@ import java.util.Scanner;
  * Created by natha on 1/12/2019.
  */
 
-public class LoginAsyncTask extends AsyncTask<String,String,Utilisateur> {
+public class LoginAsyncTask extends AsyncTask<String, String, Utilisateur> {
     private Activity activity;
     private Intent intent;
-    public LoginAsyncTask(Activity act){
-        this.activity=act;
+
+    public LoginAsyncTask(Activity act) {
+        this.activity = act;
     }
+
     @Override
     protected Utilisateur doInBackground(String... strings) {
-        Utilisateur u=null;
-        try{
-            URL url=new URL("http://androidweb.azurewebsites.net/api/Utilisateur/Login");
-            HttpURLConnection urlConnection=(HttpURLConnection) url.openConnection();
+        Utilisateur u = null;
+        try {
+            URL url = new URL("http://androidweb.azurewebsites.net/api/Utilisateur/Login");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
             urlConnection.setInstanceFollowRedirects(false);
             urlConnection.setRequestMethod("POST");
-            urlConnection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-            byte[] tab=("pseudo="+strings[0]+"&motDePasse="+strings[1]).getBytes();
-            urlConnection.setRequestProperty("Content-Length",Integer.toString(tab.length));
+            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            byte[] tab = ("pseudo=" + strings[0] + "&motDePasse=" + strings[1]).getBytes();
+            urlConnection.setRequestProperty("Content-Length", Integer.toString(tab.length));
             urlConnection.setUseCaches(false);
-            DataOutputStream wri=new DataOutputStream(urlConnection.getOutputStream());
+            DataOutputStream wri = new DataOutputStream(urlConnection.getOutputStream());
             wri.write(tab);
             urlConnection.setConnectTimeout(100000);
             urlConnection.connect();
-            if(urlConnection.getResponseCode()==200){
-                InputStream stream =urlConnection.getInputStream();
-                InputStreamReader inputStreamReader=new InputStreamReader(stream,"UTF-8");
-                Scanner scanner=new Scanner(inputStreamReader);
-                try{
-                    u=new ObjectMapper().readValue(scanner.next(), new TypeReference<Utilisateur>() {});
-                }
-                catch (IOException e){
+            if (urlConnection.getResponseCode() == 200) {
+                InputStream stream = urlConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(stream, "UTF-8");
+                Scanner scanner = new Scanner(inputStreamReader);
+                try {
+                    u = new ObjectMapper().readValue(scanner.next(), new TypeReference<Utilisateur>() {
+                    });
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             urlConnection.disconnect();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return u;
@@ -65,9 +66,9 @@ public class LoginAsyncTask extends AsyncTask<String,String,Utilisateur> {
     @Override
     protected void onPostExecute(Utilisateur utilisateur) {
         super.onPostExecute(utilisateur);
-        if(utilisateur!=null){
-            intent=new Intent(activity,ConversationListActivity.class);
-            intent.putExtra("user",String.valueOf(utilisateur.getId()));
+        if (utilisateur != null) {
+            intent = new Intent(activity, ConversationListActivity.class);
+            intent.putExtra("user", String.valueOf(utilisateur.getId()));
             new ConversationListAsync(activity).execute();
         }
     }

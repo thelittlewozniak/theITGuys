@@ -11,11 +11,19 @@ public class Conversation {
     private String sujet;
 
 
-    public int getId(){return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getSujet() {return sujet;}
+    public String getSujet() {
+        return sujet;
+    }
 
-    public void setSujet(String sujet) {this.sujet = sujet;}
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
+    }
 }

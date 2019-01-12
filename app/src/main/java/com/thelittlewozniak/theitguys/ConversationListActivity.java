@@ -26,45 +26,46 @@ import java.util.List;
 
 public class ConversationListActivity extends AppCompatActivity {
     private Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity=this;
+        activity = this;
         setContentView(R.layout.activity_conversationlist);
-        TableLayout tableLayout=findViewById(R.id.listConversation);
-        List<Conversation> conversations=null;
+        TableLayout tableLayout = findViewById(R.id.listConversation);
+        List<Conversation> conversations = null;
         try {
-            conversations = new ObjectMapper().readValue(getIntent().getExtras().getString("conversations"), new TypeReference<List<Conversation>>() {});
+            conversations = new ObjectMapper().readValue(getIntent().getExtras().getString("conversations"), new TypeReference<List<Conversation>>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(conversations!=null){
+        if (conversations != null) {
             for (int i = 0; i < conversations.size(); i++) {
-                TableRow tr=new TableRow(this);
-                TextView tv=new TextView(this);
+                TableRow tr = new TableRow(this);
+                TextView tv = new TextView(this);
                 tv.setText(conversations.get(i).getSujet());
-                tv.setTypeface(Typeface.DEFAULT,Typeface.BOLD_ITALIC);
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
-                tv.setPadding(40,40,40,40);
-                if(i%2!=0){
-                    tr.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAccent));
-                    tv.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                }
-                else {
-                    tr.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                    tv.setTextColor(ContextCompat.getColor(this,R.color.colorAccent));
+                tv.setTypeface(Typeface.DEFAULT, Typeface.BOLD_ITALIC);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+                tv.setPadding(40, 40, 40, 40);
+                if (i % 2 != 0) {
+                    tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
+                    tv.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                } else {
+                    tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                    tv.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
                 }
                 tr.addView(tv);
                 tableLayout.addView(tr);
             }
         }
-        Button addConversation=findViewById(R.id.buttonAddConversation);
+        Button addConversation = findViewById(R.id.buttonAddConversation);
         addConversation.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    activity.startActivity(new Intent(activity,AddConversationActivity.class));
-                    activity.finish();
-                }
-            }
+                                               public void onClick(View v) {
+                                                   activity.startActivity(new Intent(activity, AddConversationActivity.class));
+                                                   activity.finish();
+                                               }
+                                           }
         );
     }
 
