@@ -25,6 +25,7 @@ import java.util.List;
 public class ConversationGetAsync extends AsyncTask<String, String, List<Message>> {
     private Activity activity;
     private Intent intent;
+    public ConversationGetAsync(Activity activity){this.activity=activity;}
     @Override
     protected List<Message> doInBackground(String... strings) {
         List<Message> messages = null;

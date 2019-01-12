@@ -60,7 +60,7 @@ public class ConversationListActivity extends AppCompatActivity {
                 tr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        new ConversationListAsync(activity).execute(String.valueOf(j));
+                        new ConversationGetAsync(activity).execute(String.valueOf(j));
                     }
                 });
                 tableLayout.addView(tr);
