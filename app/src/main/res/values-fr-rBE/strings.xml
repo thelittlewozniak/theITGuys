@@ -5,4 +5,5 @@
     <string name="emailText">Entrer vos informations d\'email</string>
     <string name="passwordText">Entrer votre mot de passe</string>
     <string name="buttonConnect">Connection</string>
+    <string name="buttonRegister">Enregistrez un compte</string>
 </resources>
