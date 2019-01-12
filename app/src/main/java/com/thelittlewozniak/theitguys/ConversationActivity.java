@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thelittlewozniak.theitguys.pojo.Conversation;
+import com.thelittlewozniak.theitguys.pojo.Message;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,24 +32,24 @@ public class ConversationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
-        setContentView(R.layout.activity_conversationlist);
-        TableLayout tableLayout = findViewById(R.id.listConversation);
-        List<Conversation> conversations = null;
+        setContentView(R.layout.activity_conversation);
+        TableLayout tableLayout = findViewById(R.id.tableConversation);
+        List<Message> messages = null;
         try {
-            conversations = new ObjectMapper().readValue(getIntent().getExtras().getString("conversation"), new TypeReference<List<Conversation>>() {
+            messages = new ObjectMapper().readValue(getIntent().getExtras().getString("messages"), new TypeReference<List<Message>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (conversations != null) {
-            for (int i = 0; i < conversations.size(); i++) {
+        if (messages != null) {
+            for (int i = 0; i < messages.size(); i++) {
                 TableRow tr = new TableRow(this);
                 TextView tv = new TextView(this);
-                tv.setText(conversations.get(i).getSujet());
+                tv.setText(messages.get(i).getText());
                 tv.setTypeface(Typeface.DEFAULT, Typeface.BOLD_ITALIC);
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 tv.setPadding(40, 40, 40, 40);
-                if (i % 2 != 0) {
+                if (messages.get(i).getUtilisateur().getSexe()) {
                     tr.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
                     tv.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
                 } else {
@@ -59,19 +60,10 @@ public class ConversationActivity extends AppCompatActivity {
                 tableLayout.addView(tr);
             }
         }
-        Button addConversation = findViewById(R.id.buttonAddConversation);
-        addConversation.setOnClickListener(new View.OnClickListener() {
-                                               public void onClick(View v) {
-                                                   activity.startActivity(new Intent(activity, AddConversationActivity.class));
-                                                   activity.finish();
-                                               }
-                                           }
-        );
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        new ConversationListAsync(activity).execute();
     }
 }

@@ -45,9 +45,7 @@ public class Utilisateur {
         this.motDePasse = motDePasse;
     }
 
-    public boolean getSexe() {
-        return sexe;
-    }
+    public boolean getSexe() {return sexe;}
 
     public void setSexe(boolean sexe) {
         this.sexe = sexe;
