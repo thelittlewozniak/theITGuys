@@ -7,9 +7,7 @@ import android.os.AsyncTask;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thelittlewozniak.theitguys.pojo.Conversation;
 import com.thelittlewozniak.theitguys.pojo.Message;
-import com.thelittlewozniak.theitguys.pojo.Utilisateur;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

@@ -3,12 +3,10 @@ package com.thelittlewozniak.theitguys;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thelittlewozniak.theitguys.pojo.Message;
-import com.thelittlewozniak.theitguys.pojo.Utilisateur;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
