@@ -81,6 +81,13 @@ public class ConversationActivity extends AppCompatActivity {
                     tr.addView(usernmae);
                     tr.addView(time);
                 }
+                final int id=messages.get(i).getUtilisateur().getId();
+                tr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        new ProfileAsync(activity).execute(String.valueOf(id));
+                    }
+                });
                 tableLayout.addView(tr);
             }
         }
@@ -107,9 +114,9 @@ public class ConversationActivity extends AppCompatActivity {
         new ConversationGetAsync(activity).execute(idconv);
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
         super.onResume();
         new ConversationGetAsync(activity).execute(idconv);
-    }
+    }*/
 }
