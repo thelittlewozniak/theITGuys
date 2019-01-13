@@ -21,7 +21,9 @@ import com.thelittlewozniak.theitguys.pojo.Conversation;
 import com.thelittlewozniak.theitguys.pojo.Message;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by natha on 1/12/2019.
@@ -65,13 +67,19 @@ public class ConversationActivity extends AppCompatActivity {
                 usernmae.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 usernmae.setPadding(40, 40, 40, 40);
                 usernmae.setText(messages.get(i).getUtilisateur().getPseudo());
+                TextView time=new TextView(this);
+                time.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+                time.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                time.setText(new SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.FRANCE).format(messages.get(i).getDate()));
                 if(Session.getInstance().getUser().getId()==messages.get(i).getUtilisateur().getId()){
                     tr.addView(usernmae);
                     tr.addView(tv);
+                    tr.addView(time);
                 }
                 else{
                     tr.addView(tv);
                     tr.addView(usernmae);
+                    tr.addView(time);
                 }
                 tableLayout.addView(tr);
             }
