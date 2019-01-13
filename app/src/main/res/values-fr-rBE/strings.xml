@@ -21,4 +21,7 @@
     <string name="enteryourcity">Entrer votre ville</string>
     <string name="selectonecity">choisis en une</string>
     <string name="registerbutton">Enregistrer</string>
+    <string name="selectsex">Sélectionnez votre genre:</string>
+    <string name="female">femme</string>
+    <string name="male">homme</string>
 </resources>

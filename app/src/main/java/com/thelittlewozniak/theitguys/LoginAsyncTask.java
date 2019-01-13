@@ -71,7 +71,12 @@ public class LoginAsyncTask extends AsyncTask<String, String, Utilisateur> {
             intent = new Intent(activity, ConversationListActivity.class);
             intent.putExtra("user", String.valueOf(utilisateur.getId()));
             new ConversationListAsync(activity).execute();
-
+        }
+        else{
+            intent = new Intent(activity, MainActivity.class);
+            intent.putExtra("error", "wrong login");
+            activity.startActivity(intent);
+            activity.finish();
         }
     }
 }

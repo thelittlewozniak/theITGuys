@@ -20,4 +20,7 @@
     <string name="enteryourcity">Enter your city</string>
     <string name="selectonecity">Select one</string>
     <string name="registerbutton">Register</string>
+    <string name="selectsex">Select your gender</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
 </resources>
