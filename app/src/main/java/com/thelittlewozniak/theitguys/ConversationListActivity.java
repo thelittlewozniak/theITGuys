@@ -74,6 +74,13 @@ public class ConversationListActivity extends AppCompatActivity {
                                                }
                                            }
         );
+        Button profile=findViewById(R.id.profileListConversation);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ProfileAsync(activity).execute(String.valueOf(Session.getInstance().getUser().getId()));
+            }
+        });
     }
 
     @Override

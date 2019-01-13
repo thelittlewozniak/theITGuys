@@ -15,4 +15,5 @@
     <string name="pseudoText">pseudo:</string>
     <string name="cityText">Ville:</string>
     <string name="LastposText">dernière position:</string>
+    <string name="YourProfileButton">ton profil</string>
 </resources>
