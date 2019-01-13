@@ -29,11 +29,13 @@ import java.util.List;
 
 public class ConversationActivity extends AppCompatActivity {
     private Activity activity;
+    private String idconv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
+        idconv=getIntent().getExtras().getString("id");
         setContentView(R.layout.activity_conversation);
         TableLayout tableLayout = findViewById(R.id.tableConversation);
         List<Message> messages = null;
@@ -86,7 +88,7 @@ public class ConversationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditText message=findViewById(R.id.messageEditText);
-
+                new AddMessageAsync(activity).execute(message.getText().toString(),idconv);
             }
         });
     }
@@ -94,6 +96,6 @@ public class ConversationActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        new ConversationGetAsync(activity).execute(getIntent().getExtras().getString("id"));
+        new ConversationGetAsync(activity).execute(idconv);
     }
 }
