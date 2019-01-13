@@ -35,7 +35,7 @@ public class ConversationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
-        idconv=getIntent().getExtras().getString("id");
+        idconv=getIntent().getExtras().getString("idconv");
         setContentView(R.layout.activity_conversation);
         TableLayout tableLayout = findViewById(R.id.tableConversation);
         List<Message> messages = null;

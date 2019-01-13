@@ -64,7 +64,7 @@ public class ConversationGetAsync extends AsyncTask<String, String, List<Message
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
-            intent.putExtra("idConv",String.valueOf(id));
+            intent.putExtra("idconv",String.valueOf(id));
             activity.startActivityForResult(intent, 3);
             activity.finish();
         }

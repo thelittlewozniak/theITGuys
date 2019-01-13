@@ -38,7 +38,8 @@ public class AddMessageAsync extends AsyncTask<String, String, Message> {
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             idconv=strings[1];
-            byte[] tab = ("text=" + strings[0] + "&utilisateur=" + String.valueOf(Session.getInstance().getUser().getId())+"&conversation="+idconv).getBytes();
+            String param="text=" + strings[0] + "&utilisateur=" + String.valueOf(Session.getInstance().getUser().getId())+"&conversation="+idconv;
+            byte[] tab = param.getBytes();
             urlConnection.setRequestProperty("Content-Length", Integer.toString(tab.length));
             urlConnection.setUseCaches(false);
             DataOutputStream wri = new DataOutputStream(urlConnection.getOutputStream());
@@ -50,13 +51,12 @@ public class AddMessageAsync extends AsyncTask<String, String, Message> {
                 InputStreamReader inputStreamReader = new InputStreamReader(stream, "UTF-8");
                 Scanner scanner = new Scanner(inputStreamReader);
                 try {
-                    m = new ObjectMapper().readValue(scanner.next(), new TypeReference<Message>() {
+                    m = new ObjectMapper().readValue(scanner.nextLine(), new TypeReference<Message>() {
                     });
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            Log.e("eusidjo",tab.toString());
             urlConnection.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +69,6 @@ public class AddMessageAsync extends AsyncTask<String, String, Message> {
         super.onPostExecute(message);
         if (message != null) {
             new ConversationGetAsync(activity).execute(idconv);
-            activity.finish();
         }
     }
 }
