@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.thelittlewozniak.theitguys.MainActivity">
+
+        <TextView
+            android:id="@+id/pseudoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pseudoText"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/pseudoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/cityText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cityText"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/cityTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/lastposText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/LastposText"
+            android:textSize="40sp"/>
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/lastposMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

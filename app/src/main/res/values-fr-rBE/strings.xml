@@ -12,4 +12,7 @@
     <string name="backButton">Retour</string>
     <string name="SendMessage">envoyez</string>
     <string name="messageText">Votre message...</string>
+    <string name="pseudoText">pseudo:</string>
+    <string name="cityText">Ville:</string>
+    <string name="LastposText">dernière position:</string>
 </resources>
