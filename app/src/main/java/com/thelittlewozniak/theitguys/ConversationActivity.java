@@ -1,8 +1,11 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -103,7 +106,16 @@ public class ConversationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditText message=findViewById(R.id.messageEditText);
-                new AddMessageAsync(activity).execute(message.getText().toString(),idconv);
+                if(message.getText().toString().equals("")){
+                    final AlertDialog.Builder builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                        builder = new AlertDialog.Builder(activity, android.R.style.Theme_Material_Dialog_Alert);
+                    else
+                        builder = new AlertDialog.Builder(activity);
+                    builder.setTitle("message empty").setMessage("Your message is empty").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {public void onClick(DialogInterface dialog, int which) {}}).setIcon(android.R.drawable.ic_dialog_alert).show();
+                }
+                else
+                    new AddMessageAsync(activity).execute(message.getText().toString(),idconv);
             }
         });
     }
