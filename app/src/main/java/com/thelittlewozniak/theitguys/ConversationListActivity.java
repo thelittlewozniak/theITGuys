@@ -88,4 +88,11 @@ public class ConversationListActivity extends AppCompatActivity {
         super.onRestart();
         new ConversationListAsync(activity).execute();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new ConversationListAsync(activity).execute();
+    }
+
 }

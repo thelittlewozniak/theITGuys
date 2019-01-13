@@ -15,4 +15,8 @@
     <string name="cityText">City:</string>
     <string name="LastposText">Maps:</string>
     <string name="YourProfileButton">Your profile</string>
+    <string name="EnteryournameText">Enter your username</string>
+    <string name="EnteryourpasswordText">Enter your password</string>
+    <string name="enteryourcity">Enter your city</string>
+    <string name="selectonecity">Select one</string>
 </resources>

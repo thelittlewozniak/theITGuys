@@ -106,4 +106,10 @@ public class ConversationActivity extends AppCompatActivity {
         super.onRestart();
         new ConversationGetAsync(activity).execute(idconv);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new ConversationGetAsync(activity).execute(idconv);
+    }
 }

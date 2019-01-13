@@ -16,4 +16,8 @@
     <string name="cityText">Ville:</string>
     <string name="LastposText">Maps:</string>
     <string name="YourProfileButton">ton profil</string>
+    <string name="EnteryournameText">entrer votre pseudo</string>
+    <string name="EnteryourpasswordText">entrer votre mot de passe</string>
+    <string name="enteryourcity">Entrer votre ville</string>
+    <string name="selectonecity">choisis en une</string>
 </resources>
