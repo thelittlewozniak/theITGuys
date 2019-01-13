@@ -13,6 +13,6 @@
     <string name="messageText">Your message...</string>
     <string name="pseudoText">pseudo:</string>
     <string name="cityText">City:</string>
-    <string name="LastposText">Last position:</string>
+    <string name="LastposText">Maps:</string>
     <string name="YourProfileButton">Your profile</string>
 </resources>

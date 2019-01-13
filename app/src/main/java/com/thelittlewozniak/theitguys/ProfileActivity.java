@@ -21,7 +21,7 @@ import java.io.IOException;
  * Created by natha on 1/13/2019.
  */
 
-public class ProfileActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class ProfileActivity extends AppCompatActivity{
     private Activity activity;
     private String iduser;
     private Utilisateur utilisateur;
@@ -41,16 +41,6 @@ public class ProfileActivity extends AppCompatActivity implements OnMapReadyCall
             TextView ville=findViewById(R.id.cityTextView);
             ville.setText(utilisateur.getVille());
         }
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        LatLng lastpos = new LatLng(utilisateur.getLatitude(),utilisateur.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(lastpos).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(lastpos));
     }
 
 }
