@@ -20,4 +20,5 @@
     <string name="EnteryourpasswordText">entrer votre mot de passe</string>
     <string name="enteryourcity">Entrer votre ville</string>
     <string name="selectonecity">choisis en une</string>
+    <string name="registerbutton">Enregistrer</string>
 </resources>

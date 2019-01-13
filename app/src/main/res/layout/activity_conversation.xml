@@ -8,7 +8,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="com.thelittlewozniak.theitguys.MainActivity">
+        tools:context="com.thelittlewozniak.theitguys.ConversationActivity">
 
         <TableLayout
             android:layout_width="wrap_content"
