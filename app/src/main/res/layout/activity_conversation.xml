@@ -10,13 +10,19 @@
         android:layout_height="wrap_content"
         tools:context="com.thelittlewozniak.theitguys.ConversationActivity">
 
-        <TableLayout
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:id="@+id/horizontalView"
             android:layout_height="wrap_content"
-            android:id="@+id/tableConversation"
-            android:stretchColumns="0,1">
-        </TableLayout>
-
+            android:scrollbars="horizontal|vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dip">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tableConversation"
+                android:stretchColumns="0,1">
+            </TableLayout>
+        </HorizontalScrollView>
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="match_parent"
