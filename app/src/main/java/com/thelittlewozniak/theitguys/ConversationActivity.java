@@ -32,7 +32,7 @@ import java.util.Locale;
 public class ConversationActivity extends AppCompatActivity {
     private Activity activity;
     private String idconv;
-
+    private boolean resume;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,15 +117,21 @@ public class ConversationActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+    /*@Override
     protected void onRestart() {
         super.onRestart();
         new ConversationGetAsync(activity).execute(idconv);
-    }
+    }*/
 
-    /*@Override
+    @Override
+    protected void onPause() {
+        super.onPause();
+        resume = true;
+    }
+    @Override
     protected void onResume() {
         super.onResume();
-        new ConversationGetAsync(activity).execute(idconv);
-    }*/
+        if (resume)
+            new ConversationGetAsync(activity).execute(idconv);
+    }
 }

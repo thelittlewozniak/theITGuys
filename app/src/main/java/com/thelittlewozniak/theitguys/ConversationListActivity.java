@@ -26,7 +26,7 @@ import java.util.List;
 
 public class ConversationListActivity extends AppCompatActivity {
     private Activity activity;
-
+    private boolean resume;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,15 +84,20 @@ public class ConversationListActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        resume=true;
+    }
+    /*@Override
     protected void onRestart() {
         super.onRestart();
         new ConversationListAsync(activity).execute();
-    }
-
-    /*@Override
+    }*/
+    @Override
     protected void onResume() {
         super.onResume();
-        new ConversationListAsync(activity).execute();
-    }*/
+        if(resume)
+            new ConversationListAsync(activity).execute();
+    }
 
 }
