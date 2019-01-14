@@ -1,6 +1,8 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -23,9 +25,14 @@ import java.util.Scanner;
 public class LoginAsyncTask extends AsyncTask<String, String, Utilisateur> {
     private Activity activity;
     private Intent intent;
+    private final ProgressDialog dialog;
 
-    public LoginAsyncTask(Activity act) {
-        this.activity = act;
+    public LoginAsyncTask(Activity act) {this.activity = act;dialog=new ProgressDialog(activity);}
+
+    @Override
+    protected void onPreExecute() {
+        this.dialog.setMessage("Log in...");
+        this.dialog.show();
     }
 
     @Override
@@ -66,6 +73,8 @@ public class LoginAsyncTask extends AsyncTask<String, String, Utilisateur> {
     @Override
     protected void onPostExecute(Utilisateur utilisateur) {
         super.onPostExecute(utilisateur);
+        if(dialog.isShowing())
+            dialog.dismiss();
         if (utilisateur != null) {
             Session.getInstance().setUser(utilisateur);
             intent = new Intent(activity, ConversationListActivity.class);

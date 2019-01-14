@@ -1,6 +1,7 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -24,7 +25,15 @@ public class AddMessageAsync extends AsyncTask<String, String, Message> {
     private Activity activity;
     private Intent intent;
     private String idconv;
-    public AddMessageAsync(Activity activity){this.activity=activity;}
+    private final ProgressDialog dialog;
+    public AddMessageAsync(Activity activity){this.activity=activity;dialog=new ProgressDialog(activity);}
+
+    @Override
+    protected void onPreExecute() {
+        this.dialog.setMessage("Adding message...");
+        this.dialog.show();
+    }
+
     @Override
     protected Message doInBackground(String... strings) {
         Message m = null;
@@ -65,6 +74,8 @@ public class AddMessageAsync extends AsyncTask<String, String, Message> {
     @Override
     protected void onPostExecute(Message message) {
         super.onPostExecute(message);
+        if(dialog.isShowing())
+            dialog.dismiss();
         if (message != null) {
             new ConversationGetAsync(activity).execute(idconv);
         }

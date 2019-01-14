@@ -1,6 +1,7 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -23,7 +24,14 @@ import java.util.Scanner;
 public class RegisterAsyncTask extends AsyncTask<String, String, Utilisateur> {
     private Activity activity;
     private Intent intent;
-    public RegisterAsyncTask(Activity activity){this.activity=activity;}
+    private final ProgressDialog dialog;
+    public RegisterAsyncTask(Activity activity){this.activity=activity;dialog = new ProgressDialog(activity);}
+
+    @Override
+    protected void onPreExecute() {
+        this.dialog.setMessage("Registering...");
+        this.dialog.show();
+    }
     @Override
     protected Utilisateur doInBackground(String... strings) {
         Utilisateur u = null;
@@ -61,6 +69,9 @@ public class RegisterAsyncTask extends AsyncTask<String, String, Utilisateur> {
 
     @Override
     protected void onPostExecute(Utilisateur utilisateur) {
+        if (this.dialog.isShowing()) {
+            this.dialog.dismiss();
+        }
         super.onPostExecute(utilisateur);
         if (utilisateur != null) {
             Session.getInstance().setUser(utilisateur);

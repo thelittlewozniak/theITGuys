@@ -1,6 +1,7 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -24,7 +25,14 @@ public class ConversationGetAsync extends AsyncTask<String, String, List<Message
     private Activity activity;
     private Intent intent;
     private String id;
-    public ConversationGetAsync(Activity activity){this.activity=activity;}
+    private final ProgressDialog dialog;
+    public ConversationGetAsync(Activity activity){this.activity=activity;dialog=new ProgressDialog(activity);}
+    @Override
+    protected void onPreExecute() {
+        this.dialog.setMessage("Loading...");
+        this.dialog.show();
+    }
+
     @Override
     protected List<Message> doInBackground(String... strings) {
         List<Message> messages = null;
@@ -54,6 +62,8 @@ public class ConversationGetAsync extends AsyncTask<String, String, List<Message
     @Override
     protected void onPostExecute(List<Message> messages){
         super.onPostExecute(messages);
+        if(dialog.isShowing())
+            dialog.dismiss();
         if (messages != null) {
             intent = new Intent(activity, ConversationActivity.class);
             ObjectMapper mapper = new ObjectMapper();

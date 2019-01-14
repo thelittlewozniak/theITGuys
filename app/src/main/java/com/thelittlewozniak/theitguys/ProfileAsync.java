@@ -1,6 +1,7 @@
 package com.thelittlewozniak.theitguys;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -30,7 +31,16 @@ public class ProfileAsync extends AsyncTask<String, String, Utilisateur> {
     private Intent intent;
     private double latitude;
     private double longitude;
-    public ProfileAsync(Activity activity){this.activity=activity;}
+    private final ProgressDialog dialog;
+
+    public ProfileAsync(Activity activity){this.activity=activity;dialog=new ProgressDialog(activity);}
+
+    @Override
+    protected void onPreExecute() {
+        this.dialog.setMessage("Loading...");
+        this.dialog.show();
+    }
+
     @Override
     protected Utilisateur doInBackground(String... strings) {
         Utilisateur utilisateur = null;
@@ -102,6 +112,8 @@ public class ProfileAsync extends AsyncTask<String, String, Utilisateur> {
     @Override
     protected void onPostExecute(Utilisateur utilisateur) {
         super.onPostExecute(utilisateur);
+        if(dialog.isShowing())
+            dialog.dismiss();
         if (utilisateur != null) {
             intent = new Intent(activity, ProfileActivity.class);
             ObjectMapper mapper = new ObjectMapper();
